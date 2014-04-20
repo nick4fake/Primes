@@ -1,0 +1,24 @@
+{
+    "name":        "nick4fake/primes",
+    "description": "Primes test",
+    "license":     "GPL-3.0+",
+    "authors":     [
+        {
+            "name":  "Bogdan Yurov",
+            "email": "bogdan@yurov.me"
+        }
+    ],
+    "require":     {
+        "symfony/console":            "*",
+        "ronnieskansing/generators": "*",
+
+        "php": ">=5.5"
+    },
+    "autoload":    {
+        "psr-4": {
+            "nick4fake\\": "src/"
+        }
+    },
+
+    "minimum-stability": "dev"
+}
