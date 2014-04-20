@@ -1,0 +1,6 @@
+coverage
+phpunit.xml
+vendor
+.idea
+*.iml
+out

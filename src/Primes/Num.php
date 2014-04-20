@@ -11,18 +11,25 @@ class Num
     protected $number;
 
     /**
-     * @param float $number
+     * @param float    $number
+     * @param bool|int $numberCap
      */
     public function __construct(
-        $number
+        $number,
+        $numberCap = false
     ) {
+        // TODO: стремно это, убрать
+        if (!$number) {
+            if ($numberCap) {
+                $number = mt_rand(2, $numberCap);
+            }
+        }
+
         // TODO: float
         $this->number = (int)$number;
-
-        $this->initPrimes();
     }
 
-    protected $primes = [];
+    protected $primes = null;
 
     protected function initPrimes()
     {
@@ -42,6 +49,22 @@ class Num
         $this->primes = $pr1;
     }
 
+    protected $primePeriod = null;
+
+    protected function initPrimePeriod()
+    {
+        // TODO: float
+        $num = (int)$this->number;
+        $primes = Util::getPrimes($num);
+
+        $ret = $i = 0;
+        foreach ($primes as $occur) {
+            $i++;
+            $ret += $i * $occur;
+        }
+        $this->primePeriod = $ret;
+    }
+
     // -- Accessors ---------------------------------------
 
     /**
@@ -57,6 +80,20 @@ class Num
      */
     public function getPrimes()
     {
+        if ($this->primes === null) {
+            $this->initPrimes();
+        }
         return $this->primes;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPrimePeriod()
+    {
+        if ($this->primePeriod === null) {
+            $this->initPrimePeriod();
+        }
+        return $this->primePeriod;
     }
 } 

@@ -9,8 +9,9 @@
         }
     ],
     "require":     {
-        "symfony/console":            "*",
+        "symfony/console":           "*",
         "ronnieskansing/generators": "*",
+        "keboola/csv":               "*",
 
         "php": ">=5.5"
     },
